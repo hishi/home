@@ -22,9 +22,6 @@ colorscheme molokai
 "colorscheme evening
 "colorscheme morning
 
-" ダーク系のカラースキームを使う
-" set background=dark
-
 " 括弧入力時に対応する括弧を強調
 set showmatch
 set matchtime=1
