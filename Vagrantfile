@@ -75,7 +75,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.box = "centos72"
     node.vm.host_name = "pydev01"
     node.vm.network :forwarded_port, guest:22, host:21018, id:"ssh"
-    node.vm.network :forwarded_port, guest:8000, host:8000, id:"python"
+    node.vm.network :forwarded_port, guest:8000, host:8000, id:"web"
     node.vm.network :private_network, ip:"10.1.0.18"
     node.vm.provider "virtualbox" do |vm|
       vm.memory = 4096
