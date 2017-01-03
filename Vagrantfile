@@ -79,6 +79,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.network :private_network, ip:"10.1.0.18"
     node.vm.provider "virtualbox" do |vm|
       vm.memory = 4096
+      vm.cpus = 2
     end
   end
 
