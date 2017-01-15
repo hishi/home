@@ -46,3 +46,27 @@ let g:netrw_winsize = 80
 
 " ESCでIMEを確実にOFF
 inoremap <ESC> <ESC>:set iminsert=0<CR>
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4    " ファイラからファイルを開く際のオプション（4は常に同じバッファを使用）
+let g:netrw_altv = 1
+let g:netrw_winsize = -25       " ファイラのサイズ指定（負の数を指定することで割合ではなく絶対値）
+augroup ProjectDrawer
+  " autocmd!                    " autocmdを無効化する(source ~/.vimrc で再読込した際に2重処理されてしまうことを避ける?)
+  " vim起動時にVexploreを起動する
+  autocmd VimEnter * :Vexplore
+augroup END
+
+" ビープ音を無効化する
+set visualbell t_vb=
+set noerrorbells
+
+"""" memo
+"" window幅の変更。幅は省略可能
+"" <C-w> [幅]-
+"" <C-w> [幅]-+
+"" <C-w> [幅]-<
+"" <C-w> [幅]->
+
+
