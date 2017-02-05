@@ -1,8 +1,18 @@
-"タブはスペース２つに変換
-set tabstop=2
+" タブ設定
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
-set expandtab
-set shiftwidth=2
+set smartindent
+set list
+set listchars=tab:»-,trail:-,nbsp:%,eol:↲
+
+" pythonの場合はタブ幅を2に変更。タブはスペースに変換。
+augroup fileTypeIndent
+  autocmd!
+  autocmd BufNewFile,BufRead *.py setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+"  autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 
 "検索時に検索語をハイライト
 set hlsearch
@@ -16,8 +26,11 @@ set nobackup
 " スワップファイルを作らない
 set noswapfile
 
+" syntax on
+syntax on
+
 " カラースキーム
-"colorscheme molokai
+colorscheme molokai
 "colorscheme koehler
 "colorscheme evening
 "colorscheme morning
@@ -52,7 +65,7 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4    " ファイラからファイルを開く際のオプション（4は常に同じバッファを使用）
 let g:netrw_altv = 1
 let g:netrw_winsize = -25       " ファイラのサイズ指定（負の数を指定することで割合ではなく絶対値）
-nnoremap :tree :Vexplore
+nnoremap :t :Vexplore
 "augroup ProjectDrawer
 "  " autocmd!                    " autocmdを無効化する(source ~/.vimrc で再読込した際に2重処理されてしまうことを避ける?)
 "  " vim起動時にVexploreを起動する

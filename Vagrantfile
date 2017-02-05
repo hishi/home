@@ -49,9 +49,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 # for centos72 base
 # 10.1.0.15
 
-  config.vm.define :ora11gr2 do |node|
+  config.vm.define :ora11204 do |node|
     node.vm.box = "centos72"
-    node.vm.host_name = "ora11gr2"
+    node.vm.host_name = "ora11204"
     node.vm.network :forwarded_port, guest:22, host:21016, id:"ssh"
     node.vm.network :private_network, ip:"10.1.0.16"
     node.vm.provider "virtualbox" do |vm|
@@ -75,10 +75,53 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.box = "centos72"
     node.vm.host_name = "pydev01"
     node.vm.network :forwarded_port, guest:22, host:21018, id:"ssh"
-    node.vm.network :forwarded_port, guest:8000, host:8000, id:"web"
+    node.vm.network :forwarded_port, guest:8000, host:8018, id:"web"
     node.vm.network :private_network, ip:"10.1.0.18"
     node.vm.provider "virtualbox" do |vm|
       vm.memory = 4096
+      vm.cpus = 2
+    end
+  end
+
+  config.vm.define :pydev do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "pydev"
+    node.vm.network :forwarded_port, guest:22, host:21019, id:"ssh"
+    node.vm.network :forwarded_port, guest:8000, host:8019, id:"web"
+    node.vm.network :private_network, ip:"10.1.0.19"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 4096
+      vm.cpus = 1
+    end
+  end
+
+  config.vm.define :ora11202 do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "ora11202"
+    node.vm.network :forwarded_port, guest:22, host:21020, id:"ssh"
+    node.vm.network :private_network, ip:"10.1.0.20"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 4096
+    end
+  end
+
+## ovs02 192.168.0.121
+  config.vm.define :ovm02 do |node|
+    node.vm.box = "ol72"
+    node.vm.host_name = "ovm02"
+    node.vm.network :private_network, ip:"192.168.0.122"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 4096
+    end
+  end
+
+## ovs03 192.168.0.131
+  config.vm.define :ovm03 do |node|
+    node.vm.box = "ol72"
+    node.vm.host_name = "ovm03"
+    node.vm.network :private_network, ip:"192.168.0.132"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 8192
       vm.cpus = 2
     end
   end
