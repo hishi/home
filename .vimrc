@@ -7,6 +7,7 @@ set smartindent
 set list
 set listchars=tab:»-,trail:-,nbsp:%,eol:↲
 
+
 " pythonの場合はタブ幅を2に変更。タブはスペースに変換。
 augroup fileTypeIndent
   autocmd!
