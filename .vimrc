@@ -14,6 +14,7 @@ augroup fileTypeIndent
 "  autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+
 "検索時に検索語をハイライト
 set hlsearch
 
