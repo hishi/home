@@ -5,13 +5,14 @@ set softtabstop=4
 set autoindent
 set smartindent
 set list
-set listchars=tab:^-,trail:-,nbsp:%,eol:$
+set listchars=tab:^-,trail:-,nbsp:%
 
 
 " pythonの場合はタブ幅を2に変更。タブはスペースに変換。
 augroup fileTypeIndent
   autocmd!
-  autocmd BufNewFile,BufRead *.py setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+  autocmd BufNewFile,BufRead *.py  setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+  autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 "  autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
@@ -23,7 +24,10 @@ set hlsearch
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
 " バックアップファイルを作らない
-set nobackup
+" set nobackup
+
+" バックアップディレクトリの指定
+set backupdir=~/.vim/tmp
 
 " スワップファイルを作らない
 set noswapfile
@@ -32,10 +36,16 @@ set noswapfile
 syntax on
 
 " カラースキーム
-colorscheme molokai
-"colorscheme koehler
-"colorscheme evening
-"colorscheme morning
+if has('unix') 
+	" Unix 用設定
+	colorscheme molokai
+	"colorscheme koehler
+	"colorscheme evening
+	"colorscheme morning
+endif
+if has('win64')
+	" Windows 用設定
+endif
 
 " 括弧入力時に対応する括弧を強調
 set showmatch
