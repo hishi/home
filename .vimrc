@@ -6,6 +6,7 @@ set autoindent
 set smartindent
 set list
 set listchars=tab:^-,trail:-,nbsp:%
+set undodir=~/.vimundo
 
 
 " pythonの場合はタブ幅を2に変更。タブはスペースに変換。
