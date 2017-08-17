@@ -77,25 +77,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define :rac11204n1 do |node|
-    node.vm.box = "centos72"
-    node.vm.host_name = "rac11204n1"
-    node.vm.network :private_network, ip:"10.1.0.21"
-    node.vm.network :private_network, ip:"192.168.0.21"
-    node.vm.provider "virtualbox" do |vm|
-      vm.memory = 4096
-    end
-  end
-
-  config.vm.define :rac11204n2 do |node|
-    node.vm.box = "centos72"
-    node.vm.host_name = "rac11204n2"
-    node.vm.network :private_network, ip:"10.1.0.22"
-    node.vm.network :private_network, ip:"192.168.0.22"
-    node.vm.provider "virtualbox" do |vm|
-      vm.memory = 4096
-    end
-  end
-
 end
 
