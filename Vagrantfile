@@ -58,16 +58,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #    config.ssh.username = "root"
   end
 
-  config.vm.define :test do |node|
-    node.vm.box = "centos72"
-    node.vm.host_name = "test"
-    node.vm.network :private_network, ip:"10.1.0.5"
-    node.vm.provider "virtualbox" do |vm|
-      vm.memory = 512
-    end
-#    config.ssh.username = "root"
-  end
-
   config.vm.define :oracledb do |node|
     node.vm.box = "centos72"
     node.vm.host_name = "oracledb"
