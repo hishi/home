@@ -10,119 +10,90 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.forward_x11 = true
   #
 
+##
+## 10.1.0.1  -  9
+## 10.1.0.10 - 19 oracle database
+## 10.1.0.20 - 29 oracle database
+## 10.1.0.30 - 39 oracle vm
+
   config.vm.define :hishi do |node|
-    node.vm.box = "centos66"
+    node.vm.box = "centos72"
     node.vm.host_name = "hishi"
-    node.vm.network :forwarded_port, guest:22, host:21011, id:"ssh"
-    node.vm.network :private_network, ip:"10.1.0.11"
+#    node.vm.network :forwarded_port, guest:22, host:20001, id:"ssh"
+    node.vm.network :private_network, ip:"10.1.0.1"
     node.vm.provider "virtualbox" do |vm|
       vm.memory = 512
     end
-    config.ssh.username = "hishi"
-#    #config.ssh.host = "127.0.0.1"
-#    #config.ssh.private_key_path = "~/.ssh/id_rsa"
-  end
-
-# for zfs simulator
-# 10.1.0.12
-
-  config.vm.define :ora12c do |node|
-    node.vm.box = "centos66"
-    node.vm.host_name = "ora12c"
-    node.vm.network :forwarded_port, guest:22, host:21013, id:"ssh"
-    node.vm.network :private_network, ip:"10.1.0.13"
-    node.vm.provider "virtualbox" do |vm|
-      vm.memory = 8192
-    end
-  end
-
-  config.vm.define :ora12cm do |node|
-    node.vm.box = "centos66"
-    node.vm.host_name = "ora12cm"
-    node.vm.network :forwarded_port, guest:22, host:21014, id:"ssh"
-    node.vm.network :private_network, ip:"10.1.0.14"
-    node.vm.provider "virtualbox" do |vm|
-      vm.memory = 8192
-    end
-  end
-
-# for centos72 base
-# 10.1.0.15
-
-  config.vm.define :ora11204 do |node|
-    node.vm.box = "centos72"
-    node.vm.host_name = "ora11204"
-    node.vm.network :forwarded_port, guest:22, host:21016, id:"ssh"
-    node.vm.network :private_network, ip:"10.1.0.16"
-    node.vm.provider "virtualbox" do |vm|
-      vm.memory = 4096
-    end
-  end
-
-  config.vm.define :hishi7 do |node|
-    node.vm.box = "centos72"
-    node.vm.host_name = "hishi7"
-    node.vm.network :forwarded_port, guest:22, host:21017, id:"ssh"
-    node.vm.network :forwarded_port, guest:9292, host:9292, id:"rack"
-    node.vm.network :private_network, ip:"10.1.0.17"
-    node.vm.provider "virtualbox" do |vm|
-      vm.memory = 4096
-    end
 #    config.ssh.username = "hishi"
-  end
-
-  config.vm.define :pydev01 do |node|
-    node.vm.box = "centos72"
-    node.vm.host_name = "pydev01"
-    node.vm.network :forwarded_port, guest:22, host:21018, id:"ssh"
-    node.vm.network :forwarded_port, guest:8000, host:8018, id:"web"
-    node.vm.network :private_network, ip:"10.1.0.18"
-    node.vm.provider "virtualbox" do |vm|
-      vm.memory = 4096
-      vm.cpus = 2
-    end
   end
 
   config.vm.define :pydev do |node|
     node.vm.box = "centos72"
     node.vm.host_name = "pydev"
-    node.vm.network :forwarded_port, guest:22, host:21019, id:"ssh"
-    node.vm.network :forwarded_port, guest:8000, host:8019, id:"web"
-    node.vm.network :private_network, ip:"10.1.0.19"
+    node.vm.network :private_network, ip:"10.1.0.2"
     node.vm.provider "virtualbox" do |vm|
       vm.memory = 4096
       vm.cpus = 1
     end
+#    config.ssh.username = "root"
   end
 
-  config.vm.define :ora11202 do |node|
+  config.vm.define :zabbix do |node|
     node.vm.box = "centos72"
-    node.vm.host_name = "ora11202"
-    node.vm.network :forwarded_port, guest:22, host:21020, id:"ssh"
-    node.vm.network :private_network, ip:"10.1.0.20"
+    node.vm.host_name = "zabbix"
+    node.vm.network :private_network, ip:"10.1.0.3"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 512
+    end
+#    config.ssh.username = "root"
+  end
+
+  config.vm.define :ldap do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "ldap"
+    node.vm.network :private_network, ip:"10.1.0.4"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 512
+    end
+#    config.ssh.username = "root"
+  end
+
+  config.vm.define :test do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "test"
+    node.vm.network :private_network, ip:"10.1.0.5"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 512
+    end
+#    config.ssh.username = "root"
+  end
+
+  config.vm.define :oracledb do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "oracledb"
+    node.vm.network :private_network, ip:"10.1.0.11"
     node.vm.provider "virtualbox" do |vm|
       vm.memory = 4096
     end
   end
 
-## ovs02 192.168.0.121
-  config.vm.define :ovm02 do |node|
-    node.vm.box = "ol72"
-    node.vm.host_name = "ovm02"
-    node.vm.network :private_network, ip:"192.168.0.122"
+  config.vm.define :rac11204n1 do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "rac11204n1"
+    node.vm.network :private_network, ip:"10.1.0.21"
+    node.vm.network :private_network, ip:"192.168.0.21"
     node.vm.provider "virtualbox" do |vm|
       vm.memory = 4096
     end
   end
 
-## ovs03 192.168.0.131
-  config.vm.define :ovm03 do |node|
-    node.vm.box = "ol72"
-    node.vm.host_name = "ovm03"
-    node.vm.network :private_network, ip:"192.168.0.132"
+  config.vm.define :rac11204n2 do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "rac11204n2"
+    node.vm.network :private_network, ip:"10.1.0.22"
+    node.vm.network :private_network, ip:"192.168.0.22"
     node.vm.provider "virtualbox" do |vm|
-      vm.memory = 8192
-      vm.cpus = 2
+      vm.memory = 4096
     end
   end
 
