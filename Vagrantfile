@@ -58,6 +58,36 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #    config.ssh.username = "root"
   end
 
+  config.vm.define :ldap2 do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "ldap2"
+    node.vm.network :private_network, ip:"10.1.0.5"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 512
+    end
+#    config.ssh.username = "root"
+  end
+
+  config.vm.define :snmpMgr do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "snmpMgr"
+    node.vm.network :private_network, ip:"10.1.0.6"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 512
+    end
+#    config.ssh.username = "root"
+  end
+
+  config.vm.define :snmpAgent do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "snmpAgent"
+    node.vm.network :private_network, ip:"10.1.0.7"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 512
+    end
+#    config.ssh.username = "root"
+  end
+
   config.vm.define :oracledb do |node|
     node.vm.box = "centos72"
     node.vm.host_name = "oracledb"
