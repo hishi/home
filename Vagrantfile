@@ -72,6 +72,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.box = "centos72"
     node.vm.host_name = "snmpMgr"
     node.vm.network :private_network, ip:"10.1.0.6"
+    node.vm.network :private_network, ip:"10.2.0.6"
     node.vm.provider "virtualbox" do |vm|
       vm.memory = 512
     end
@@ -82,6 +83,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.box = "centos72"
     node.vm.host_name = "snmpAgent"
     node.vm.network :private_network, ip:"10.1.0.7"
+    node.vm.network :private_network, ip:"10.2.0.7"
     node.vm.provider "virtualbox" do |vm|
       vm.memory = 512
     end
@@ -93,7 +95,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.host_name = "oracledb"
     node.vm.network :private_network, ip:"10.1.0.11"
     node.vm.provider "virtualbox" do |vm|
-      vm.memory = 4096
+#      vm.memory = 4096
+      vm.memory = 2048
+    end
+  end
+
+  config.vm.define :emcc132 do |node|
+    node.vm.box = "centos72"
+    node.vm.host_name = "emcc132"
+    node.vm.network :private_network, ip:"10.1.0.12"
+    node.vm.provider "virtualbox" do |vm|
+      vm.memory = 8192
     end
   end
 
