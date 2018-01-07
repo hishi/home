@@ -1,22 +1,4 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim 内部で利用する PATH の設定
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:delimiter = ';'
-
-function! AddPath(pathlist) abort " {{{
-  let pathlist = split($PATH, s:delimiter)
-  for path in map(filter(a:pathlist, 'v:val'), 'expand(v:val)') 
-    if isdirectory(path) && index(pathlist, path) == -1
-      call insert(pathlist, path, 0)
-    endif
-  endfor
-  let $PATH = join(pathlist, s:delimiter)
-endfunction " }}}
-call AddPath([
-      \ '~/.vim/mypath/',
-      \])
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " エンコード
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 scriptencoding cp932
@@ -60,7 +42,7 @@ set nowrap
 
 if has('unix') 
 	" Unix 用設定
-	colorscheme molokai
+	"colorscheme molokai
 	"colorscheme koehler
 	"colorscheme evening
 	"colorscheme morning
@@ -273,3 +255,13 @@ vmap <Leader>c <Plug>(caw:i:toggle)
 " let g:unite_yarm_limit = 25
 " " バックアップ先ディレクトリ。定義されていない場合はバックアップしない
 " let g:unite_yarm_backup_dir = '~/.vim/tmp'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-fugitive
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-gitgutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
