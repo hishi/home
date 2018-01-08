@@ -270,6 +270,8 @@ vmap <Leader>c <Plug>(caw:i:toggle)
 " vim-todo-lists
 " https://github.com/aserebryakov/vim-todo-lists
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TODOäÆóπéûÇ…É\Å[ÉgÇµÇ»Ç¢
+let g:VimTodoListsMoveItems = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-easy-align
