@@ -84,9 +84,6 @@ vmap <C-X> "*d<ESC>
 " inoremap ,date <C-R>=strftime('%Y-%m-%d')<CR>
 " inoremap ,time <C-R>=strftime('%H:%M:%S')<CR>
 
-" inoremap <expr> ,df strftime('%Y-%m-%d %H:%M')
-inoremap <expr> <C-^> strftime('%Y-%m-%d %H:%M')
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -102,48 +99,25 @@ set shellslash
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" dein
+" vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" deinパス設定
-let s:dein_dir = fnamemodify('~/.vim/dein/', ':p')
-let s:dein_repo_dir = s:dein_dir . 'repos/github.com/Shougo/dein.vim'
+set runtimepath+=~/.vim
+call plug#begin('~/.vim/plugged')
 
-" dein.vim本体の存在チェックとインストール
-if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' shellescape(s:dein_repo_dir)
-endif
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'aserebryakov/vim-todo-lists'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'glidenote/memolist.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'rking/ag.vim'
+Plug 'thinca/vim-quickrun'
+Plug 'tpope/vim-fugitive'
+Plug 'tyru/caw.vim'
 
-" dein.vim本体をランタイムパスに追加
-if &runtimepath !~# '/dein.vim'
-    execute 'set runtimepath^=' . s:dein_repo_dir
-endif
-
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  " プラグインリストを収めた TOML ファイル
-  " 予め TOML ファイル（後述）を用意しておく
-  let g:rc_dir    = expand('~/.vim/rc')
-  let s:toml      = g:rc_dir . '/dein.toml'
-  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-  " TOML を読み込み、キャッシュしておく
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  " 設定終了
-  call dein#end()
-  call dein#save_state()
-endif
-
-filetype plugin indent on
-syntax enable
-
-" プラグインのインストール
-if dein#check_install()
-  call dein#install()
-endif
-
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-markdown, previm
@@ -181,26 +155,20 @@ let g:quickrun_config['sql'] = {
 " ctrlp
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 検索対象外設定
-set wildignore+=~/media/*,~/_old/*,~/Log/*/*,*.so,*.swp,*.zip,*.jpg,*.png,*.tgz,*.iso
+set wildignore+=bin,Excel,GNS3,Heroku,media,Oracle,VirtualBoxVMs
 " 検索対象外ディレクトリ
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|vagrant|vagrant.d)$',
-  \ 'file': '\v\.(exe|so|dll|iso|tgz|zip)$',
+  \ 'dir':  '\v[\/]\.(git|hg|ssh|vim|svn|vagrant|vagrant.d)$',
+  \ 'file': '\v\.(exe|so|dll|iso|tgz|zip|jpg|iso|lnk)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-let g:ctrlp_user_command = 'ag.lnk -i --nocolor --nogroup --hidden -g ""%s'
-let g:ctrlp_use_caching=0
+" let g:ctrlp_use_caching=0
+" let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" mattn/jvgrep
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set grepprg=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " unite
@@ -209,13 +177,18 @@ let g:unite_enable_ignore_case=1
 let g:unite_enable_smart_case=1
 
 " grep 検索
-nnoremap <silent> ,g :<C-u>Unite grep -buffer-name=search-buffer<CR>
-
+nnoremap <silent> ,g  :<C-u>Unite grep:  -buffer-name=search-buffer<CR>
 " カーソル位置の単語を grep 検索
 nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R>
 
 " grep 検索結果の再呼出
 nnoremap <silent> ,r :<C-u>UniteResume search-buffer<CR>
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--vimgrep --nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " lightline
