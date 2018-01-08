@@ -98,6 +98,9 @@ set noswapfile
 set backspace=indent,eol,start
 set shellslash
 
+" 前回終了したカーソル行に移動
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " dein
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
