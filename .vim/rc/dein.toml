@@ -28,5 +28,8 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'aserebryakov/vim-todo-lists'
 
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
 #[[plugins]]
 #repo = ''
