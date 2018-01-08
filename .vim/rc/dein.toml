@@ -25,5 +25,8 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
+[[plugins]]
+repo = 'aserebryakov/vim-todo-lists'
+
 #[[plugins]]
 #repo = ''
