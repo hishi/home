@@ -116,6 +116,7 @@ Plug 'rking/ag.vim'
 Plug 'thinca/vim-quickrun'
 Plug 'tpope/vim-fugitive'
 Plug 'tyru/caw.vim'
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
@@ -254,4 +255,10 @@ let g:VimTodoListsMoveItems = 0
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-startify
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:startify_bookmarks = [
+  \ '~/_vimrc',
+  \ '~/memo/my.todo',
+  \ ]
