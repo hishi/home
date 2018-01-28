@@ -263,16 +263,22 @@ let g:startify_bookmarks = [
   \ '~/memo/my.todo',
   \ ]
 
+let g:startify_custom_indices = ['f', 'g']
+
 let g:startify_list_order = [
    \ ['Bookmarks:'],
    \ 'bookmarks',
-   \ ['Recently used files:'],
+   \ ['Last recently opened files:'],
    \ 'files',
-   \ ['   My most recently used files in the current directory:'],
+   \ ['Last recently opened files in the current directory:'],
    \ 'dir',
-   \ ['   These are my sessions:'],
+   \ ['Sessions:'],
    \ 'sessions',
-   \ ['   These are my commands:'],
+   \ ['Commands:'],
    \ 'commands',
    \ ]
 
+let g:startify_commands = [
+    \ {'l': ['List memo', 'MemoList']},
+    \ {'n': ['New memo', 'MemoNew']},
+    \ ]
