@@ -204,14 +204,14 @@ map <Leader>mn  :MemoNew<CR>
 map <Leader>ml  :MemoList<CR>
 map <Leader>mg  :MemoGrep<CR>
 let g:memolist_memo_suffix = "txt"
-let g:memolist_memo_date = "%Y/%m/%d %H:%M"
+let g:memolist_memo_date = "%Y-%m-%d %H:%M"
 "let g:memolist_memo_date = "epoch"
 "let g:memolist_memo_date = "%D %T"
 "let g:memolist_prompt_tags = 1
 "let g:memolist_prompt_categories = 1
 "let g:memolist_qfixgrep = 1
 "let g:memolist_vimfiler = 1
-let g:memolist_template_dir_path = "~/memo"
+let g:memolist_template_dir_path = "~/.vim/template/memolist"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " caw
@@ -262,3 +262,31 @@ let g:startify_bookmarks = [
   \ '~/_vimrc',
   \ '~/memo/my.todo',
   \ ]
+
+"let g:startify_list_order = ['bookmarks', 'files', 'dir', 'sessions', 'commands']
+"let g:startify_list_order = [
+"            \ ['   My most recently', '   used files'],
+"            \ 'files',
+"            \ ['   My most recently used files in the current directory:'],
+"            \ 'dir',
+"            \ ['   These are my sessions:'],
+"            \ 'sessions',
+"            \ ['   These are my bookmarks:'],
+"            \ 'bookmarks',
+"            \ ['   These are my commands:'],
+"            \ 'commands',
+"            \ ]
+
+let g:startify_list_order = [
+   \ ['Bookmarks:'],
+   \ 'bookmarks',
+   \ ['Recently used files:'],
+   \ 'files',
+   \ ['   My most recently used files in the current directory:'],
+   \ 'dir',
+   \ ['   These are my sessions:'],
+   \ 'sessions',
+   \ ['   These are my commands:'],
+   \ 'commands',
+   \ ]
+
