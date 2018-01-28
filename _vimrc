@@ -263,20 +263,6 @@ let g:startify_bookmarks = [
   \ '~/memo/my.todo',
   \ ]
 
-"let g:startify_list_order = ['bookmarks', 'files', 'dir', 'sessions', 'commands']
-"let g:startify_list_order = [
-"            \ ['   My most recently', '   used files'],
-"            \ 'files',
-"            \ ['   My most recently used files in the current directory:'],
-"            \ 'dir',
-"            \ ['   These are my sessions:'],
-"            \ 'sessions',
-"            \ ['   These are my bookmarks:'],
-"            \ 'bookmarks',
-"            \ ['   These are my commands:'],
-"            \ 'commands',
-"            \ ]
-
 let g:startify_list_order = [
    \ ['Bookmarks:'],
    \ 'bookmarks',
