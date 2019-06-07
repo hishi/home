@@ -1,7 +1,39 @@
 set guioptions-=T						" ツールバーを非表示
-colorscheme slate						" colorscheme
-set guifont=Myrica_M:h12:cSHIFTJIS		" フォント
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" colorscheme
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd ColorScheme * highlight Comment guifg=grey60
+autocmd ColorScheme * highlight PreProc guibg=NONE guifg=#ffa0f0
+
+" 改行文字とタブ文字の色設定（NonTextが改行、SpecialKeyがタブ）
+"hi NonText guibg=NONE guifg=DarkGreen
+autocmd ColorScheme * highlight SpecialKey guibg=NONE guifg=Gray40
+
+" colorscheme molokai
+" colorscheme desert
+" colorscheme office-light
+colorscheme slate
+
+highlight CursorLine gui=underline guifg=NONE guibg=NONE
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" font
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set guifont=Myrica_M:h12:cSHIFTJIS		" フォント
+set guifont=Ricty_Diminished_Discord:h12:cSHIFTJIS		" フォント
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" other
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set linespace=1							" 行間隔
+
+" :Wを実行した際にエクスプローラを開く
+cnoreabb <expr>W 'browse w<CR>'
+
+" :Eを実行した際にエクスプローラを開く
+cnoreabb <expr>E 'silent browse e %:h<CR>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 前回保存時のウインドウサイズを保存
