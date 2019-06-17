@@ -28,6 +28,7 @@ set listchars=tab:^-,trail:-,nbsp:%
 augroup fileTypeIndent
   autocmd!
   autocmd BufNewFile,BufRead *.py  setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+  autocmd BufNewFile,BufRead *.md  setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
   autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 "  autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
@@ -77,6 +78,7 @@ highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
 " アンダーラインを引く(gui)
 highlight CursorLine gui=underline ctermfg=NONE ctermbg=NONE
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " keymap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,6 +100,11 @@ nnoremap <C-a> ggVG
 " :b<space>時、:bd<space>時に、ls結果を表示する
 cnoreabb <expr>b  getcmdtype()==':' && getcmdline()=='b'  ? 'ls<CR>:b'  : 'b'
 cnoreabb <expr>bd getcmdtype()==':' && getcmdline()=='bd' ? 'ls<CR>:bd' : 'bd'
+
+" 透明度の設定
+noremap <Space>; :set transparency+=10<CR>
+noremap <Space>- :set transparency-=10<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax
@@ -164,10 +171,19 @@ Plug 'vim-scripts/vtreeexplorer'
 
 Plug 'fuenor/qfixgrep'
 
-Plug 'plasticboy/vim-markdown'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
 Plug 'thinca/vim-fontzoom'
+
+Plug 'thinca/vim-singleton'
+
+"Plug 'mattn/vimtweak'
+"Plug 'mattn/transparency-windows-vim'
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+"Plug 'tpope/vim-markdown'
+"Plug 'gabrielelana/vim-markdown'
 
 call plug#end()
 
@@ -239,9 +255,16 @@ autocmd VimEnter * wincmd p
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufRead,BufNewFile *mkd :set filetype=markdown
-autocmd BufRead,BufNewFile *md  :set filetype=markdown
+" autocmd BufRead,BufNewFile *mkd :set filetype=markdown
+" autocmd BufRead,BufNewFile *md  :set filetype=markdown
 
 let g:vim_markdown_folding_disabled=1
 let g:previm_enable_realtime=1
+let g:vim_markdown_new_list_item_indent=0
+let g:vim_markdown_auto_insert_bullets=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-singleton
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call singleton#enable()
 

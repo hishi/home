@@ -17,17 +17,23 @@ colorscheme slate
 
 highlight CursorLine gui=underline guifg=NONE guibg=NONE
 
+" 透明化
+autocmd GUIEnter * set transparency=210
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " font
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set guifont=Myrica_M:h12:cSHIFTJIS		" フォント
 set guifont=Ricty_Diminished_Discord:h12:cSHIFTJIS		" フォント
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " other
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set linespace=1							" 行間隔
+
+if has("browsefilter")
+   let g:browsefilter = "All Files\t*.*\n"
+endif
 
 " :Wを実行した際にエクスプローラを開く
 cnoreabb <expr>W 'browse w<CR>'
